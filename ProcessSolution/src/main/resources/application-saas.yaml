@@ -1,0 +1,25 @@
+# https://github.com/camunda-community-hub/spring-zeebe#configuring-camunda-platform-8-saas-connection
+# https://github.com/camunda-community-hub/spring-zeebe#additional-configuration-options
+
+# 8.2.16
+#zeebe.client:
+#  cloud:
+#    region: bru-2
+#    clusterId: 6f5d02fa-43b3-47ef-ad4c-6f01b0d33e1d
+#    clientId: 7gA0Efiz23mutRIUwyeoXZ_a~w8vjYhw
+#    clientSecret: rhlpVY7QogJ9AHPl-2cy8Cr6pTWPz5TYsSY-2n3-kZ-mhZAAZroj3IcPfP33MwNW
+
+
+# 8.3.0
+# https://github.com/camunda-community-hub/spring-zeebe#configuring-camunda-platform-8-saas-connection
+# https://github.com/camunda-community-hub/spring-zeebe#additional-configuration-options
+
+zeebe.client:
+  cloud:
+    region: bru-2
+    clusterId: 0f2dbc0e-3292-4dde-a7ab-43a4ac8f57b7
+    clientId: CSgIPOxzd-VBixogFGL7Z-lOOTXWTl74
+    clientSecret: ~KrBUyZb9pobtOgVGPZLeY0tRdRgGv1n352.._8OAVJH_5~9RZJn.sZvVVwPwUCK
+  connection-mode: CLOUD
+  worker.threads: 1
+
