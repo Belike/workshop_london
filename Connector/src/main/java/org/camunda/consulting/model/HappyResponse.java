@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 public class HappyResponse {
 
-    public String id;
-    public String url;
-    public int width;
-    public int height;
+    private String id;
+    private String url;
+    private int width;
+    private int height;
 }

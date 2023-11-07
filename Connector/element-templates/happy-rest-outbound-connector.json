@@ -16,8 +16,11 @@
     "id" : "authentication",
     "label" : "Authentication"
   }, {
-    "id" : "endpoint",
+    "id" : "happyurl",
     "label" : "Dog or Cat"
+  }, {
+    "id" : "parameters",
+    "label" : "Query Parameters"
   }, {
     "id" : "timeout",
     "label" : "Connection timeout"
@@ -71,15 +74,13 @@
     },
     "type" : "String"
   }, {
-    "id" : "URL",
-    "label" : "URL",
+    "id" : "happyurl",
+    "label" : "Happyurl",
     "optional" : false,
-    "constraints" : {
-      "notEmpty" : true
-    },
-    "group" : "endpoint",
+    "value" : "DOG",
+    "group" : "happyurl",
     "binding" : {
-      "name" : "URL",
+      "name" : "happyurl",
       "type" : "zeebe:input"
     },
     "type" : "Dropdown",
@@ -96,7 +97,7 @@
     "description" : "Map of query parameters to add to the request URL",
     "optional" : true,
     "feel" : "required",
-    "group" : "endpoint",
+    "group" : "parameters",
     "binding" : {
       "name" : "queryParameters",
       "type" : "zeebe:input"

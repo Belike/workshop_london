@@ -25,7 +25,7 @@ public class MyFunctionTest {
   }
 
   @Test
-  void shouldReturnReceivedMessageWhenExecute() throws Exception {
+  void outboundConnectorTestWithApiKey() throws Exception {
 
     ObjectMapper objectMapper = ConnectorsObjectMapperSupplier.getCopy();
     // given

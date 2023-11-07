@@ -1,10 +1,10 @@
 package org.camunda.consulting.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.camunda.connector.api.annotation.FEEL;
 import io.camunda.connector.generator.annotation.TemplateProperty;
 import io.camunda.connector.generator.dsl.Property;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +18,22 @@ import java.util.Objects;
 @NoArgsConstructor
 public class HappyRequest {
 
+    @JsonProperty("happyurl")
+    public void setHappyUrl(String happyUrl){
+        if(happyUrl.equals("CAT")) this.happyUrl = HappyUrl.CAT;
+        if(happyUrl.equals("DOG")) this.happyUrl = HappyUrl.DOG;
+    }
+
     @FEEL
-    @NotNull
-    @TemplateProperty(group = "endpoint", id = "URL")
+    @TemplateProperty(
+            group = "happyurl",
+            id = "happyurl",
+            optional = false,
+            defaultValue = "DOG"
+    )
     @Getter
     @Setter
-    private HappyUrl url;
+    private HappyUrl happyUrl;
 
     @Valid
     @Getter
@@ -42,14 +52,14 @@ public class HappyRequest {
     @FEEL
     @TemplateProperty(
             feel = Property.FeelMode.required,
-            group = "endpoint",
+            group = "parameters",
             optional = true,
             description = "Map of query parameters to add to the request URL")
     @Getter
     @Setter
     private Map<String, String> queryParameters;
 
-       public boolean hasQueryParameters() {
+    public boolean hasQueryParameters() {
         return queryParameters != null;
     }
 
@@ -57,12 +67,14 @@ public class HappyRequest {
         return authentication != null;
     }
 
+    public boolean hasHappyUrl() { return happyUrl != null; }
+
     @Override
     public boolean equals(Object obj) {
         if(this == obj) return true;
         if(obj == null || getClass() != obj.getClass()) return false;
         HappyRequest that = (HappyRequest) obj;
-        return url.equals(that.url)
+        return happyUrl.equals(that.happyUrl)
                 && Objects.equals(authentication, that.authentication)
                 && Objects.equals(connectionTimeoutInSeconds, that.connectionTimeoutInSeconds)
                 && Objects.equals(queryParameters, that.queryParameters);
@@ -70,6 +82,6 @@ public class HappyRequest {
 
     @Override
     public int hashCode() {
-        return Objects.hash(url, authentication, connectionTimeoutInSeconds, queryParameters);
+        return Objects.hash(happyUrl, authentication, connectionTimeoutInSeconds, queryParameters);
     }
 }

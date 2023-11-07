@@ -17,7 +17,7 @@ import java.util.List;
 @OutboundConnector(
     name = "HAPPY HTTP REST",
     inputVariables = {
-            "url",
+            "happyurl",
             "authentication",
             "queryParameters",
             "connectionTimeoutInSeconds"
@@ -31,7 +31,8 @@ import java.util.List;
     icon = "dog_cat.svg",
     propertyGroups = {
       @ElementTemplate.PropertyGroup(id = "authentication", label = "Authentication"),
-      @ElementTemplate.PropertyGroup(id = "endpoint", label = "Dog or Cat"),
+      @ElementTemplate.PropertyGroup(id = "happyurl", label = "Dog or Cat"),
+      @ElementTemplate.PropertyGroup(id = "parameters", label = "Query Parameters"),
       @ElementTemplate.PropertyGroup(id = "timeout", label = "Connection timeout"),
     },
     inputDataClass = HappyRequest.class)
@@ -50,6 +51,7 @@ public class HappyHttpFunction implements OutboundConnectorFunction {
 
   @Override
   public Object execute(OutboundConnectorContext context) throws IOException {
+    log.info("Starting HappyREST");
     final var connectorRequest = context.bindVariables(HappyRequest.class);
     return executeConnector(connectorRequest);
   }

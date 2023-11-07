@@ -25,7 +25,7 @@ public class HttpService {
     public List<HappyResponse> executeHappyRequest(HappyRequest happyRequest) throws IOException {
         final HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
 
-        GenericUrl genericUrl = new GenericUrl(happyRequest.getUrl().getValue());
+        GenericUrl genericUrl = new GenericUrl(happyRequest.getHappyUrl().getValue());
         if(happyRequest.getAuthentication() != null){
             if (happyRequest.getAuthentication() instanceof ApiKeyAuthentication){
                 genericUrl.put("api_key", ((ApiKeyAuthentication) happyRequest.getAuthentication()).getApiKey());

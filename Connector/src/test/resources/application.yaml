@@ -1,0 +1,9 @@
+# https://github.com/camunda-community-hub/spring-zeebe#configuring-camunda-platform-8-saas-connection
+# https://github.com/camunda-community-hub/spring-zeebe#additional-configuration-options
+
+zeebe.client:
+  cloud:
+    region: bru-2
+    clusterId: 0f2dbc0e-3292-4dde-a7ab-43a4ac8f57b7
+    clientId: SY6Lz5KOVbelk5z2j_44YUJBb4mKUFBR
+    clientSecret: 73IscTXmnswFEhcc1ndPO-NVyo6aY4AWkF9XZLgugWs4ezEPTZX8WsVH~PC8~kql
