@@ -1,5 +1,6 @@
 package org.camunda.consulting.adapter;
 
+import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.response.ActivatedJob;
 import io.camunda.zeebe.spring.client.annotation.JobWorker;
 import io.camunda.zeebe.spring.client.annotation.Variable;
@@ -15,6 +16,9 @@ import java.util.Map;
 @Slf4j
 public class RandomizerWorker {
 
+    @Autowired
+    ZeebeClient zeebeClient;
+
 
     RandomService randomService;
     @Autowired
@@ -22,11 +26,13 @@ public class RandomizerWorker {
         this.randomService = randomService;
     }
 
-    @JobWorker(type = "randomizer", autoComplete = true)
-    public Map<String,Object> randomInteger(@Variable Integer min, @Variable Integer max){
+    @JobWorker(type = "retrieve-information-worker", autoComplete = true)
+    public Map<String,Object> randomInteger(@Variable Integer min, @Variable Integer max, ActivatedJob job){
         int randomInt = randomService.randomInt(min, max);
         Map<String, Object> variables = new HashMap<>();
         variables.put("randomInt", randomInt);
+
+
         return variables;
     }
 
